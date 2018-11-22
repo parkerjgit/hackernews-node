@@ -1,6 +1,17 @@
+# After every change you’re making to the data model, you need to redeploy the Prisma service to apply your changes.
+
 type Link {
   id: ID! @unique
-  createAt: DateTime!
   description: String!
   url: String!
+  postedBy: User
 }
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  links: [Link!]!
+}
+
