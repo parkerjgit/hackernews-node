@@ -17,7 +17,7 @@ const resolvers = {
           url: args.url,
           description: args.description,
         },
-      }, info)
+      }, info);
     },
   },
 }
@@ -29,7 +29,7 @@ const resolvers = {
 //   description: (root) => root.description,
 //   url: (root) => root.url,
 // }
-}
+// }
 
 // 3
 const server = new GraphQLServer({

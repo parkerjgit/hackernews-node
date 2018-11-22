@@ -1,3 +1,5 @@
+# import Link from "./generated/prisma.graphql"
+
 # // define schema
 # // enforces the API
 # // three root types: Query, Mutation and Subscription
@@ -11,9 +13,9 @@ type Query {
 }
 
 type Mutation {
-  postLink(url: String!, description: String!): Link!
-  updateLink(id: ID!, url: String, description: String): Link
-  deleteLink(id: ID!): Link
+  post(url: String!, description: String!): Link!
+  # updateLink(id: ID!, url: String, description: String): Link
+  # deleteLink(id: ID!): Link
 }
 
 type Link {
