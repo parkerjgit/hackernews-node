@@ -1,26 +1,29 @@
 const {GraphQLServer} = require('graphql-yoga');
 const { Prisma } = require('prisma-binding');
+const Query = require('./resolvers/Query')
+const Mutation = require('./resolvers/Mutation')
+const AuthPayload = require('./resolvers/AuthPayload')
 
 // implementation of schema
 // Note: return types must adhere to schema
-const resolvers = {
-  Query: {
-    info: () => `This is the API of a Hackernews Clone`,
-    feed: (root, args, context, info) => {
-      return context.db.query.links({}, info)
-    },
-  },
-  Mutation: {
-    post: (root, args, context, info) => {
-      return context.db.mutation.createLink({
-        data: {
-          url: args.url,
-          description: args.description,
-        },
-      }, info);
-    },
-  },
-}
+// const resolvers = {
+//   Query: {
+//     info: () => `This is the API of a Hackernews Clone`,
+//     feed: (root, args, context, info) => {
+//       return context.db.query.links({}, info)
+//     },
+//   },
+//   Mutation: {
+//     post: (root, args, context, info) => {
+//       return context.db.mutation.createLink({
+//         data: {
+//           url: args.url,
+//           description: args.description,
+//         },
+//       }, info);
+//     },
+//   },
+// }
 // GraphQL resolver function actually receives four inputs:
 // The first argument, commonly called root (or parent) is the result of the previous resolver execution level
 // removed b/c graphql can infer them!!!
@@ -31,7 +34,11 @@ const resolvers = {
 // }
 // }
 
-
+const resolvers = {
+  Query,
+  Mutation,
+  AuthPayload
+}
 
 // 3
 const server = new GraphQLServer({
