@@ -20,11 +20,11 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload
 }
 
-type Link {
-  id: ID!
-  description: String!
-  url: String!
-}
+# type Link {
+#   id: ID!
+#   description: String!
+#   url: String!
+# }
 
 type AuthPayload {
   token: String
