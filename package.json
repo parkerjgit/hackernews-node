@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-link-ws": "^1.0.10",
     "bcryptjs": "^2.4.3",
     "graphql-yoga": "^1.16.7",
     "jsonwebtoken": "^8.4.0",
-    "prisma-binding": "^2.2.5"
+    "prisma-binding": "^2.2.5",
+    "subscriptions-transport-ws": "^0.9.15"
   }
 }

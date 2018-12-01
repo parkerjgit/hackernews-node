@@ -1,8 +1,12 @@
 const {GraphQLServer} = require('graphql-yoga');
 const { Prisma } = require('prisma-binding');
+
 const Query = require('./resolvers/Query');
 const Mutation = require('./resolvers/Mutation')
 const AuthPayload = require('./resolvers/AuthPayload');
+const Subscription = require('./resolvers/Subscription')
+
+
 
 
 // implementation of schema
@@ -38,13 +42,17 @@ const AuthPayload = require('./resolvers/AuthPayload');
 const resolvers = {
   Query,
   Mutation,
-  AuthPayload
+  AuthPayload,
+  Subscription,
 }
 
 // 3
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
+  resolverValidationOptions: {
+    requireResolversForResolveType: false
+  },
   context: req => ({
     ...req,
     db: new Prisma({
